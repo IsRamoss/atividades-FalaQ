@@ -51,7 +51,9 @@ class PerguntaSeeder extends Seeder
                 'evento_id'  => 2,
                 'texto'      => "Pergunta do workshop #{$j}: O que é o Service Container?",
                 'status'     => 'aprovado',
+                'is_public'  => true
             ]);
         }
+        
     }
 }
