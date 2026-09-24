@@ -20,11 +20,12 @@ class EventoController extends Controller
     {
         $evento = Evento::find($id);
 
-        $perguntas = Pergunta::
-            where('is_public', true)
-            ->where('evento_id', $id)
-            ->paginate(50);
-
+        $perguntas = Pergunta::where('evento_id', $id)
+            ->where('is_public', true)
+            ->with('user')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+        
         return view('eventos.show', compact('evento', 'perguntas'));
     }
 
