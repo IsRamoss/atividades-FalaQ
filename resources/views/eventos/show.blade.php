@@ -15,13 +15,12 @@
 
                     <textarea name="texto" id="texto" rows="4" 
                               class="form-control bg-dark text-white border-secondary @error('texto') is-invalid @enderror"
-                              placeholder="Digite sua dúvida ou comentário para o palestrante..."></textarea>
-
+                              placeholder="Digite sua dúvida ou comentário para o palestrante..."
+                              >{{ old('texto') }}</textarea>
                     @error('texto')
-                        <div class="invalid-feedback fw-bold">
-                            {{ $message }}
-                        </div>
+                        <p class="text-red-500">{{ $message }}</p>
                     @enderror
+
                 </div>
                 <button type="submit" class="btn btn-primary w-100 fw-bold">Enviar Pergunta</button>
             </form>
