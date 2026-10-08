@@ -13,11 +13,6 @@ class PerguntaSeeder extends Seeder
 {
     public function run(): void
     {
-        $user = User::create([
-            'name' => 'nato-re',
-            'email' => 'nato-re@gmail.com',
-            'password' => Hash::make('12341234'),
-        ]);
 
         $eventoPrincipal = Evento::create([
             'titulo'      => 'Palestra Principal: O Futuro da Computação em Nuvem',
@@ -55,5 +50,7 @@ class PerguntaSeeder extends Seeder
             ]);
         }
         
+        
+
     }
 }

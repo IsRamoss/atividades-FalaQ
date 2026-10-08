@@ -23,6 +23,8 @@ class EventoController extends Controller
         $perguntas = Pergunta::where('evento_id', $id)
             ->where('is_public', true)
             ->with('user')
+            ->withCount('votos')
+            ->orderByDesc('votos_count')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         
@@ -52,5 +54,13 @@ class EventoController extends Controller
     public function store(EventoFormRequest $request){
         $evento = $request->user()->eventos()->create($request->validated());
         return redirect()->route('eventos.show', $evento->id);
+    }
+
+
+    public function toggleInscricao(Evento $evento)
+    {
+        $evento->participantes()->toggle(Auth::id());
+
+        return back()->with('status', 'Inscrição atualizada com sucesso!');
     }
 }
